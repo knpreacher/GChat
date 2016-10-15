@@ -5,7 +5,7 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/wl"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -26,6 +26,10 @@
         <activity
             android:name=".MainActivity"
             android:label="Main">
+        </activity>
+        <activity
+            android:name=".SignUpActivity"
+            android:label="SUA">
         </activity>
     </application>
 

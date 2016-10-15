@@ -12,9 +12,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+import android.widget.ViewFlipper;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    View[] screens;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +44,13 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        findViewById(R.id.inc1).setVisibility(View.GONE);
+        //ViewFlipper vf = (ViewFlipper)findViewById()
+
+        screens = new View[]{
+                findViewById(R.id.fragment_chats_list),
+
+        };
     }
 
     @Override
@@ -48,7 +59,7 @@ public class MainActivity extends AppCompatActivity
         if (drawer.isDrawerOpen(GravityCompat.START)) {
             drawer.closeDrawer(GravityCompat.START);
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
         }
     }
 
@@ -82,15 +93,17 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_camera) {
             // Handle the camera action
+            Toast.makeText(this, "cam", Toast.LENGTH_SHORT).show();
+            findViewById(R.id.inc1).setVisibility(View.GONE);
         } else if (id == R.id.nav_gallery) {
+            Toast.makeText(this, "gal", Toast.LENGTH_SHORT).show();
+            findViewById(R.id.inc1).setVisibility(View.VISIBLE);
 
         } else if (id == R.id.nav_slideshow) {
-
+            Toast.makeText(this, "sli", Toast.LENGTH_SHORT).show();
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+            Toast.makeText(this, "man", Toast.LENGTH_SHORT).show();
+        } else {
 
         }
 
@@ -98,4 +111,6 @@ public class MainActivity extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
 }

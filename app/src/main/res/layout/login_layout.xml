@@ -54,7 +54,9 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="36dp"
         android:id="@+id/textView3"
-        android:textColor="#ac1c00" />
+        android:textColor="#ac1c00"
+        android:onClick="gotoSignUp"
+        android:clickable="true" />
 
     <Button
         android:text="Sign in"

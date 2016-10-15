@@ -1,5 +1,6 @@
 package com.example.knp.gchat;
 
+import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -58,6 +59,9 @@ public class ChatActivityMain extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
 
+
+                        //TODO НЕ ЗАБУДЬ УБРАТЬ!!!
+                        startActivity(new Intent(ChatActivityMain.this,MainActivity.class));
                     }
                 }){
                     @Override
@@ -71,5 +75,22 @@ public class ChatActivityMain extends AppCompatActivity {
                 //tv.setText(etP.getText().toString());
                 queue.add(stringRequest);
 
+    }
+
+    public void gotoSignUp(View view) {
+        startActivity(new Intent(ChatActivityMain.this,SignUpActivity.class));
+    }
+    int i = 0;
+    @Override
+    public void onBackPressed() {
+        i++;
+        if(i==1){
+            Toast.makeText(context, "Press again for exit", Toast.LENGTH_SHORT).show();
+        } else if (i==2){
+            i=0;
+            System.exit(0);
+        }
+
+        //super.onBackPressed();
     }
 }
