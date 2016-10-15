@@ -1,23 +1,75 @@
 package com.example.knp.gchat;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by knp on 10/15/16.
  */
 
 public class ChatActivityMain extends AppCompatActivity {
+    EditText etL;
+    EditText etP;
+    Context context;
+    TextView tv;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_layout);
+
+        etL = (EditText)findViewById(R.id.etLogin);
+        etP = (EditText)findViewById(R.id.etPass);
+        tv = (TextView)findViewById(R.id.textView3);
+
+        context = getBaseContext();
+
     }
 
     public void signIn(View view) {
-        startActivity(new Intent(ChatActivityMain.this,MainActivity.class));
+
+                RequestQueue queue = Volley.newRequestQueue(context);
+                final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.43.72:8080/login/", new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response) {
+                        //super
+                        Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                        startActivity(new Intent(ChatActivityMain.this,MainActivity.class));
+                    }
+                }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Toast.makeText(context, error.toString(), Toast.LENGTH_SHORT).show();
+
+                    }
+                }){
+                    @Override
+                    protected Map<String, String> getParams() throws AuthFailureError {
+                        Map<String,String> params = new HashMap<String, String>();
+                        params.put("login",etL.getText().toString());
+                        params.put("password", etP.getText().toString());
+                        return params;
+                    }
+                };
+                //tv.setText(etP.getText().toString());
+                queue.add(stringRequest);
+
     }
 }

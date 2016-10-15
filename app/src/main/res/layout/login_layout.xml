@@ -29,7 +29,8 @@
         android:background="@drawable/edit_text_style"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textAlignment="center" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -42,7 +43,8 @@
         android:id="@+id/etPass"
         android:layout_below="@+id/etLogin"
         android:layout_alignStart="@+id/etLogin"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        android:textAlignment="center" />
 
     <TextView
         android:text="sign up"
