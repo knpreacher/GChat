@@ -10,10 +10,15 @@ import android.support.v7.app.AppCompatActivity;
  */
 
 public class SplashAct extends AppCompatActivity {
+
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.splash_layout);
+
+
 
         Thread splash_time = new Thread()
         {

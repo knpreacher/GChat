@@ -44,14 +44,16 @@ public class ChatActivityMain extends AppCompatActivity {
 
     }
 
-    public void signIn(View view) {
+    SetPref sp;
 
+    public void signIn(View view) {
                 RequestQueue queue = Volley.newRequestQueue(context);
                 final StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.43.72:8080/login/", new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         //super
                         Toast.makeText(context, response, Toast.LENGTH_SHORT).show();
+                        //sp.savePref(etL.getText().toString(),etP.getText().toString());
                         startActivity(new Intent(ChatActivityMain.this,MainActivity.class));
                     }
                 }, new Response.ErrorListener() {
