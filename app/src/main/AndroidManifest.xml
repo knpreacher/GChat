@@ -12,7 +12,8 @@
         <activity
             android:name=".SplashAct"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,12 +25,17 @@
             android:label="Chat">
         </activity>
         <activity
+            android:theme="@style/AppTheme.NoActionBar"
             android:name=".MainActivity"
             android:label="Main">
         </activity>
         <activity
             android:name=".SignUpActivity"
             android:label="SUA">
+        </activity>
+        <activity
+            android:name=".InChatActivity"
+            android:label="ICA">
         </activity>
     </application>
 
