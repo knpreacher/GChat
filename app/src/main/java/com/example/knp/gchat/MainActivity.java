@@ -49,6 +49,8 @@ public class MainActivity extends AppCompatActivity
         recyclerView.setAdapter(mAdapter);
 
         inputMessage = (EditText)findViewById(R.id.message) ;
+
+
     }
     int i = 0;
     public void sendMessage() {
